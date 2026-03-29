@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Para Thabata 💙" />
+    <link rel="manifest" href="manifest.json" />
+    <title>Para Thabata 💙</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ✨ Canvas para partículas flutuantes -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ============================================
+    SEÇÃO 1 — TELA INICIAL
+============================================ -->
+    <section id="section-hero" class="section active">
+
+        <!-- Rosas vetorizadas SVG — azul + branca -->
+        <div class="roses-container">
+
+            <!-- Rosa Azul -->
+            <div class="rose-wrapper rose-blue" id="rose-blue">
+                <svg class="rose-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Caule -->
+                    <line x1="60" y1="140" x2="60" y2="90" stroke="#1a6b3c" stroke-width="3" stroke-linecap="round" />
+                    <line x1="60" y1="120" x2="42" y2="105" stroke="#1a6b3c" stroke-width="2" stroke-linecap="round" />
+                    <!-- Folha esquerda -->
+                    <ellipse cx="36" cy="101" rx="12" ry="6" fill="#1a6b3c" transform="rotate(-30 36 101)"
+                        opacity="0.9" />
+                    <!-- Pétalas externas -->
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#blueGrad1)" opacity="0.85"
+                        transform="rotate(-15 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#blueGrad1)" opacity="0.85"
+                        transform="rotate(15 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#blueGrad1)" opacity="0.85"
+                        transform="rotate(50 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#blueGrad1)" opacity="0.85"
+                        transform="rotate(-50 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#blueGrad1)" opacity="0.85"
+                        transform="rotate(90 60 68)" />
+                    <!-- Pétalas médias -->
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#blueGrad2)" opacity="0.9"
+                        transform="rotate(-20 60 65)" />
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#blueGrad2)" opacity="0.9"
+                        transform="rotate(20 60 65)" />
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#blueGrad2)" opacity="0.9"
+                        transform="rotate(65 60 65)" />
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#blueGrad2)" opacity="0.9"
+                        transform="rotate(-65 60 65)" />
+                    <!-- Centro -->
+                    <circle cx="60" cy="62" r="10" fill="url(#blueGrad3)" />
+                    <circle cx="60" cy="62" r="5" fill="#00d4ff" opacity="0.6" />
+                    <!-- Definições gradientes -->
+                    <defs>
+                        <radialGradient id="blueGrad1" cx="50%" cy="60%">
+                            <stop offset="0%" stop-color="#2a5298" />
+                            <stop offset="100%" stop-color="#1e3c72" />
+                        </radialGradient>
+                        <radialGradient id="blueGrad2" cx="50%" cy="50%">
+                            <stop offset="0%" stop-color="#3a6bc8" />
+                            <stop offset="100%" stop-color="#1e3c72" />
+                        </radialGradient>
+                        <radialGradient id="blueGrad3" cx="40%" cy="40%">
+                            <stop offset="0%" stop-color="#00d4ff" />
+                            <stop offset="100%" stop-color="#1e3c72" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- Rosa Branca -->
+            <div class="rose-wrapper rose-white" id="rose-white">
+                <svg class="rose-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Caule -->
+                    <line x1="60" y1="140" x2="60" y2="90" stroke="#2d7a4f" stroke-width="3" stroke-linecap="round" />
+                    <line x1="60" y1="115" x2="78" y2="100" stroke="#2d7a4f" stroke-width="2" stroke-linecap="round" />
+                    <!-- Folha direita -->
+                    <ellipse cx="84" cy="96" rx="12" ry="6" fill="#2d7a4f" transform="rotate(30 84 96)" opacity="0.9" />
+                    <!-- Pétalas externas -->
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#whiteGrad1)" opacity="0.80"
+                        transform="rotate(-15 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#whiteGrad1)" opacity="0.80"
+                        transform="rotate(15 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#whiteGrad1)" opacity="0.80"
+                        transform="rotate(50 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#whiteGrad1)" opacity="0.80"
+                        transform="rotate(-50 60 68)" />
+                    <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#whiteGrad1)" opacity="0.80"
+                        transform="rotate(90 60 68)" />
+                    <!-- Pétalas médias -->
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#whiteGrad2)" opacity="0.9"
+                        transform="rotate(-20 60 65)" />
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#whiteGrad2)" opacity="0.9"
+                        transform="rotate(20 60 65)" />
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#whiteGrad2)" opacity="0.9"
+                        transform="rotate(65 60 65)" />
+                    <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#whiteGrad2)" opacity="0.9"
+                        transform="rotate(-65 60 65)" />
+                    <!-- Centro -->
+                    <circle cx="60" cy="62" r="10" fill="url(#whiteGrad3)" />
+                    <circle cx="60" cy="62" r="5" fill="#ffffff" opacity="0.8" />
+                    <!-- Definições gradientes -->
+                    <defs>
+                        <radialGradient id="whiteGrad1" cx="50%" cy="60%">
+                            <stop offset="0%" stop-color="#e8ecf0" />
+                            <stop offset="100%" stop-color="#c8d0d8" />
+                        </radialGradient>
+                        <radialGradient id="whiteGrad2" cx="50%" cy="50%">
+                            <stop offset="0%" stop-color="#f8f9fa" />
+                            <stop offset="100%" stop-color="#d0d8e0" />
+                        </radialGradient>
+                        <radialGradient id="whiteGrad3" cx="40%" cy="40%">
+                            <stop offset="0%" stop-color="#ffffff" />
+                            <stop offset="100%" stop-color="#c0ccd8" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+
+        </div><!-- /roses-container -->
+
+        <!-- Textos da tela inicial -->
+        <div class="hero-text">
+            <p class="hero-from">um presente de</p>
+            <h1 class="hero-name-from">théo</h1>
+            <p class="hero-divider">✦</p>
+            <p class="hero-for">para</p>
+            <h2 class="hero-name-to">thabata</h2>
+        </div>
+
+        <!-- Seta de scroll -->
+        <div class="scroll-hint">
+            <span>deslize para baixo</span>
+            <div class="scroll-arrow">↓</div>
+        </div>
+
+    </section><!-- /section-hero -->
+
+
+    <!-- ============================================
+    SEÇÃO 2 — CÍRCULO INTERATIVO
+============================================ -->
+    <section id="section-circle" class="section">
+
+        <div class="circle-section-inner">
+
+            <!-- Círculo pulsante -->
+            <div class="circle-wrapper" id="magic-circle">
+                <div class="circle-pulse-ring ring1"></div>
+                <div class="circle-pulse-ring ring2"></div>
+                <div class="circle-pulse-ring ring3"></div>
+                <div class="circle-main">
+                    <span class="circle-label">clique<br>em mim</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /section-circle -->
+
+
+    <!-- ============================================
+    SEÇÃO 3 — REVELAÇÃO FINAL
+============================================ -->
+    <section id="section-reveal" class="section hidden-section">
+
+        <!-- Container das rosas voando -->
+        <div id="flying-roses-container"></div>
+
+        <!-- Confetti canvas -->
+        <canvas id="confetti-canvas"></canvas>
+
+        <!-- Texto principal da revelação -->
+        <div class="reveal-text-container" id="reveal-text">
+            <h2 class="reveal-message">Uma <em>Flor</em> para outra <em>Flor</em></h2>
+            <h1 class="reveal-name">Thabata</h1>
+
+            <!-- Rosas azul + branca abaixo do texto -->
+            <div class="reveal-roses">
+
+                <!-- Rosa Azul -->
+                <div class="reveal-rose-wrapper reveal-rose-blue">
+                    <svg class="reveal-rose-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="60" y1="140" x2="60" y2="90" stroke="#1a6b3c" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="60" y1="120" x2="42" y2="105" stroke="#1a6b3c" stroke-width="2"
+                            stroke-linecap="round" />
+                        <ellipse cx="36" cy="101" rx="12" ry="6" fill="#1a6b3c" transform="rotate(-30 36 101)"
+                            opacity="0.9" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rblueGrad1)" opacity="0.85"
+                            transform="rotate(-15 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rblueGrad1)" opacity="0.85"
+                            transform="rotate(15 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rblueGrad1)" opacity="0.85"
+                            transform="rotate(50 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rblueGrad1)" opacity="0.85"
+                            transform="rotate(-50 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rblueGrad1)" opacity="0.85"
+                            transform="rotate(90 60 68)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rblueGrad2)" opacity="0.9"
+                            transform="rotate(-20 60 65)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rblueGrad2)" opacity="0.9"
+                            transform="rotate(20 60 65)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rblueGrad2)" opacity="0.9"
+                            transform="rotate(65 60 65)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rblueGrad2)" opacity="0.9"
+                            transform="rotate(-65 60 65)" />
+                        <circle cx="60" cy="62" r="10" fill="url(#rblueGrad3)" />
+                        <circle cx="60" cy="62" r="5" fill="#00d4ff" opacity="0.6" />
+                        <defs>
+                            <radialGradient id="rblueGrad1" cx="50%" cy="60%">
+                                <stop offset="0%" stop-color="#2a5298" />
+                                <stop offset="100%" stop-color="#1e3c72" />
+                            </radialGradient>
+                            <radialGradient id="rblueGrad2" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="#3a6bc8" />
+                                <stop offset="100%" stop-color="#1e3c72" />
+                            </radialGradient>
+                            <radialGradient id="rblueGrad3" cx="40%" cy="40%">
+                                <stop offset="0%" stop-color="#00d4ff" />
+                                <stop offset="100%" stop-color="#1e3c72" />
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Rosa Branca -->
+                <div class="reveal-rose-wrapper reveal-rose-white">
+                    <svg class="reveal-rose-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="60" y1="140" x2="60" y2="90" stroke="#2d7a4f" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="60" y1="115" x2="78" y2="100" stroke="#2d7a4f" stroke-width="2"
+                            stroke-linecap="round" />
+                        <ellipse cx="84" cy="96" rx="12" ry="6" fill="#2d7a4f" transform="rotate(30 84 96)"
+                            opacity="0.9" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rwhiteGrad1)" opacity="0.80"
+                            transform="rotate(-15 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rwhiteGrad1)" opacity="0.80"
+                            transform="rotate(15 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rwhiteGrad1)" opacity="0.80"
+                            transform="rotate(50 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rwhiteGrad1)" opacity="0.80"
+                            transform="rotate(-50 60 68)" />
+                        <ellipse cx="60" cy="68" rx="18" ry="22" fill="url(#rwhiteGrad1)" opacity="0.80"
+                            transform="rotate(90 60 68)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rwhiteGrad2)" opacity="0.9"
+                            transform="rotate(-20 60 65)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rwhiteGrad2)" opacity="0.9"
+                            transform="rotate(20 60 65)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rwhiteGrad2)" opacity="0.9"
+                            transform="rotate(65 60 65)" />
+                        <ellipse cx="60" cy="65" rx="13" ry="17" fill="url(#rwhiteGrad2)" opacity="0.9"
+                            transform="rotate(-65 60 65)" />
+                        <circle cx="60" cy="62" r="10" fill="url(#rwhiteGrad3)" />
+                        <circle cx="60" cy="62" r="5" fill="#ffffff" opacity="0.8" />
+                        <defs>
+                            <radialGradient id="rwhiteGrad1" cx="50%" cy="60%">
+                                <stop offset="0%" stop-color="#e8ecf0" />
+                                <stop offset="100%" stop-color="#c8d0d8" />
+                            </radialGradient>
+                            <radialGradient id="rwhiteGrad2" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="#f8f9fa" />
+                                <stop offset="100%" stop-color="#d0d8e0" />
+                            </radialGradient>
+                            <radialGradient id="rwhiteGrad3" cx="40%" cy="40%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="#c0ccd8" />
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+            </div><!-- /reveal-roses -->
+
+            <div class="reveal-signature">—théo</div>
+        </div>
+
+    </section><!-- /section-reveal -->
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

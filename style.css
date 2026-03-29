@@ -1,0 +1,730 @@
+/* ================================================
+THABATA — Site Romântico Minimalista
+Theo para Thabata 💙
+   ================================================ */
+
+/* -------- CSS VARIABLES -------- */
+:root {
+    --black: #000000;
+    --blue-neon: #00d4ff;
+    --blue-mid: #0099cc;
+    --blue-dark: #1e3c72;
+    --white: #ffffff;
+    --white-soft: #e8f0ff;
+
+    --glow-blue: 0 0 8px #00d4ff, 0 0 20px #00d4ff80, 0 0 45px #00d4ff40;
+    --glow-white: 0 0 8px #ffffff, 0 0 20px #ffffff80, 0 0 45px #ffffff30;
+    --glow-blue-strong: 0 0 12px #00d4ff, 0 0 35px #00d4ff, 0 0 70px #00d4ff60;
+    --glow-white-strong: 0 0 12px #ffffff, 0 0 35px #ffffffcc, 0 0 70px #ffffff60;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Cormorant Garamond', 'Times New Roman', serif;
+
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* -------- RESET & BASE -------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: default;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* -------- PARTICLES CANVAS -------- */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* -------- SECTIONS -------- */
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.section.hidden-section {
+    display: none;
+}
+
+/* ================================================
+SEÇÃO 1 — HERO
+   ================================================ */
+#section-hero {
+    background: radial-gradient(ellipse at center top, #050a12 0%, #000000 70%);
+    gap: 0;
+    padding: 40px 20px 80px;
+}
+
+/* ---- Rosas ---- */
+.roses-container {
+    display: flex;
+    gap: clamp(20px, 6vw, 60px);
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 36px;
+    animation: rosesEntrance 1.4s var(--transition-bounce) forwards;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+@keyframes rosesEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rose-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: roseFloat 4s ease-in-out infinite;
+}
+
+.rose-wrapper.rose-white {
+    animation-delay: -2s;
+}
+
+@keyframes roseFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(2deg);
+    }
+}
+
+.rose-svg {
+    width: clamp(100px, 22vw, 160px);
+    height: auto;
+    filter: drop-shadow(0 0 10px #00d4ff) drop-shadow(0 0 25px #00d4ff80);
+    transition: filter 0.5s ease;
+}
+
+.rose-wrapper.rose-blue .rose-svg {
+    filter: drop-shadow(0 0 12px #00d4ff) drop-shadow(0 0 30px #00d4ff80) drop-shadow(0 0 55px #00d4ff40);
+    animation: roseFloat 4s ease-in-out infinite, rosePulseBlue 2.5s ease-in-out infinite;
+}
+
+.rose-wrapper.rose-white .rose-svg {
+    filter: drop-shadow(0 0 12px #ffffff) drop-shadow(0 0 30px #ffffff80) drop-shadow(0 0 55px #ffffff40);
+    animation: roseFloat 4s ease-in-out infinite -2s, rosePulseWhite 2.5s ease-in-out infinite 1.2s;
+}
+
+@keyframes rosePulseBlue {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px #00d4ff) drop-shadow(0 0 25px #00d4ff80) drop-shadow(0 0 50px #00d4ff40);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 45px #00d4ff) drop-shadow(0 0 80px #00d4ff60);
+    }
+}
+
+@keyframes rosePulseWhite {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 25px #ffffff80) drop-shadow(0 0 50px #ffffff40);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 18px #ffffff) drop-shadow(0 0 45px #ffffffcc) drop-shadow(0 0 80px #ffffff60);
+    }
+}
+
+/* ---- Hero Text ---- */
+.hero-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    animation: textFadeUp 1.6s var(--transition-smooth) 0.4s forwards;
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+@keyframes textFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-from {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.3em;
+    color: var(--blue-neon);
+    text-shadow: var(--glow-blue);
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.hero-name-from {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--blue-neon);
+    text-shadow: var(--glow-blue-strong);
+    text-transform: lowercase;
+    line-height: 1;
+}
+
+.hero-divider {
+    color: var(--blue-neon);
+    text-shadow: var(--glow-blue);
+    font-size: 1.2rem;
+    margin: 8px 0;
+    opacity: 0.7;
+}
+
+.hero-for {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.3em;
+    color: var(--white-soft);
+    text-shadow: var(--glow-white);
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.hero-name-to {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 10vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-shadow: var(--glow-white-strong);
+    text-transform: lowercase;
+    line-height: 1;
+}
+
+/* ---- Scroll Hint ---- */
+.scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: textFadeUp 1.6s var(--transition-smooth) 1.2s forwards, hintBob 2s ease-in-out 2.6s infinite;
+    opacity: 0;
+}
+
+@keyframes hintBob {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(6px);
+    }
+}
+
+.scroll-hint span {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--blue-neon);
+    opacity: 0.7;
+    text-shadow: var(--glow-blue);
+    text-transform: lowercase;
+}
+
+.scroll-arrow {
+    font-size: 1.4rem;
+    color: var(--blue-neon);
+    text-shadow: var(--glow-blue);
+    animation: arrowBounce 1.2s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(6px);
+        opacity: 0.5;
+    }
+}
+
+/* ================================================
+SEÇÃO 2 — CÍRCULO
+   ================================================ */
+#section-circle {
+    background: radial-gradient(ellipse at center, #020a14 0%, #000000 75%);
+}
+
+.circle-section-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.circle-hint-text {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    letter-spacing: 0.2em;
+    color: var(--white-soft);
+    text-shadow: var(--glow-white);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#section-circle.in-view .circle-hint-text {
+    opacity: 0.8;
+    transform: translateY(0);
+}
+
+/* ---- Círculo ---- */
+.circle-wrapper {
+    position: relative;
+    width: clamp(160px, 40vw, 220px);
+    height: clamp(160px, 40vw, 220px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.8s var(--transition-bounce) 0.3s, transform 0.8s var(--transition-bounce) 0.3s;
+}
+
+#section-circle.in-view .circle-wrapper {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Anéis de pulso */
+.circle-pulse-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid var(--blue-neon);
+    animation: ringPulse 2.4s ease-out infinite;
+    pointer-events: none;
+}
+
+.ring1 {
+    width: 100%;
+    height: 100%;
+    animation-delay: 0s;
+}
+
+.ring2 {
+    width: 100%;
+    height: 100%;
+    animation-delay: 0.8s;
+}
+
+.ring3 {
+    width: 100%;
+    height: 100%;
+    animation-delay: 1.6s;
+}
+
+@keyframes ringPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.65);
+        opacity: 0;
+    }
+}
+
+/* Círculo principal */
+.circle-main {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #0a2040, #000510);
+    border: 1.5px solid var(--blue-neon);
+    box-shadow: var(--glow-blue-strong), inset 0 0 30px #00d4ff20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s var(--transition-bounce), box-shadow 0.4s ease;
+    animation: circleGlow 3s ease-in-out infinite;
+}
+
+@keyframes circleGlow {
+
+    0%,
+    100% {
+        box-shadow: var(--glow-blue-strong), inset 0 0 30px #00d4ff20;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #00d4ff, 0 0 50px #00d4ff, 0 0 90px #00d4ff80, inset 0 0 50px #00d4ff30;
+    }
+}
+
+.circle-wrapper:hover .circle-main,
+.circle-wrapper:active .circle-main {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #00d4ff, 0 0 55px #00d4ff, 0 0 100px #00d4ff80, inset 0 0 60px #00d4ff40;
+}
+
+.circle-label {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+    letter-spacing: 0.15em;
+    color: var(--white);
+    text-shadow: var(--glow-white);
+    text-align: center;
+    line-height: 1.5;
+    user-select: none;
+}
+
+.circle-sub-hint {
+    font-size: 1.6rem;
+    animation: subHintPulse 2s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.6s;
+}
+
+#section-circle.in-view .circle-sub-hint {
+    opacity: 1;
+}
+
+@keyframes subHintPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* ================================================
+SEÇÃO 3 — REVELAÇÃO
+   ================================================ */
+#section-reveal {
+    background: radial-gradient(ellipse at center, #020a16 0%, #000000 80%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    overflow: hidden;
+    animation: revealFadeIn 0.6s ease forwards;
+}
+
+@keyframes revealFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#flying-roses-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ---- Rosas voando ---- */
+.flying-rose {
+    position: absolute;
+    pointer-events: none;
+    animation: roseExplode 2.5s var(--transition-smooth) forwards;
+}
+
+.flying-rose svg {
+    width: clamp(40px, 8vw, 70px);
+    height: auto;
+}
+
+@keyframes roseExplode {
+    0% {
+        opacity: 0;
+        transform: scale(0.1) rotate(0deg);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.1) rotate(var(--rot-mid));
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.7) translate(var(--tx), var(--ty)) rotate(var(--rot-end));
+    }
+}
+
+/* ---- Texto da revelação ---- */
+.reveal-text-container {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: revealEntrance 1s var(--transition-bounce) 0.6s forwards;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+@keyframes revealEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.reveal-heart {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    animation: heartBeat 1s ease-in-out 1.4s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.25);
+    }
+
+    60% {
+        transform: scale(1.1);
+    }
+}
+
+.reveal-message {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1.8rem, 6vw, 3.2rem);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    text-shadow: var(--glow-white-strong);
+    text-transform: lowercase;
+}
+
+.reveal-name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 12vw, 7rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--blue-neon);
+    text-shadow: var(--glow-blue-strong);
+    text-transform: lowercase;
+    line-height: 1;
+    animation: nameShimmer 3s ease-in-out 1.6s infinite;
+}
+
+@keyframes nameShimmer {
+
+    0%,
+    100% {
+        text-shadow: var(--glow-blue-strong);
+    }
+
+    50% {
+        text-shadow: 0 0 20px #00d4ff, 0 0 50px #00d4ff, 0 0 90px #00d4ff, 0 0 130px #00d4ff80;
+    }
+}
+
+.reveal-sub {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.25em;
+    color: var(--white-soft);
+    text-shadow: var(--glow-white);
+    opacity: 0.8;
+    margin-top: 8px;
+}
+
+.reveal-signature {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-style: italic;
+    letter-spacing: 0.2em;
+    color: var(--blue-neon);
+    text-shadow: var(--glow-blue);
+    margin-top: 12px;
+    opacity: 0.9;
+}
+
+/* ---- Rosas da revelação ---- */
+.reveal-roses {
+    display: flex;
+    gap: clamp(24px, 6vw, 56px);
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 20px;
+    animation: rosesRevealEntrance 1s var(--transition-bounce) 1.2s both;
+}
+
+@keyframes rosesRevealEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.7);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.reveal-rose-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal-rose-svg {
+    width: clamp(70px, 16vw, 110px);
+    height: auto;
+}
+
+.reveal-rose-blue .reveal-rose-svg {
+    filter: drop-shadow(0 0 12px #00d4ff) drop-shadow(0 0 30px #00d4ff80) drop-shadow(0 0 55px #00d4ff40);
+    animation: roseFloat 4s ease-in-out infinite, rosePulseBlue 2.5s ease-in-out infinite;
+}
+
+.reveal-rose-white .reveal-rose-svg {
+    filter: drop-shadow(0 0 12px #ffffff) drop-shadow(0 0 30px #ffffff80) drop-shadow(0 0 55px #ffffff40);
+    animation: roseFloat 4s ease-in-out infinite -2s, rosePulseWhite 2.5s ease-in-out infinite 1.2s;
+}
+
+/* ================================================
+RESPONSIVE TWEAKS
+   ================================================ */
+@media (max-width: 480px) {
+    .roses-container {
+        gap: 16px;
+    }
+
+    .hero-text {
+        gap: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .roses-container {
+        margin-bottom: 50px;
+    }
+}
+
+/* ================================================
+SCROLLBAR CUSTOM
+   ================================================ */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--blue-neon);
+    border-radius: 2px;
+    box-shadow: var(--glow-blue);
+}
+
+/* ================================================
+SELECTION
+   ================================================ */
+::selection {
+    background: var(--blue-neon);
+    color: var(--black);
+}
